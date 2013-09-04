@@ -1,0 +1,28 @@
+{
+  "author": "Alex Williams, Unscramble <license@unscramble.jp>",
+  "name": "jidoteki",
+  "version": "0.0.1",
+  "description": "Official Jidoteki.com API client and helper library",
+  "main": "lib/jidoteki.js",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unscramble/jidoteki-node.git"
+  },
+  "dependencies": {
+    "armrest": "git+https://github.com/shutterstock/armrest.git#v2.0.1"
+  },
+  "devDependencies": {
+    "coffee-script": ">= 1.6.1"
+  },
+  "keywords": [
+    "jidoteki",
+    "client",
+    "library"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/unscramble/jidoteki-node/issues"
+  },
+  "prepublish": "coffee -c -o lib src/jidoteki.coffee"
+}
