@@ -10,17 +10,18 @@
 ###
 
 crypto    = require 'crypto'
-util      = require 'util'
 armrest   = require 'armrest'
 
 jido = exports ? this
 
-jido.api        = armrest.client 'https://api.beta.jidoteki.com'
 jido.settings   =
+  endpoint:   'https://api.beta.jidoteki.com'
   userid:     process.env.JIDOTEKI_USERID || 'change me'
   apikey:     process.env.JIDOTEKI_APIKEY || 'change me'
-  useragent:  'nodeclient-jidoteki/0.1'
+  useragent:  'nodeclient-jidoteki/0.2'
   token:      null
+
+jido.api        = armrest.client jido.settings.endpoint
 
 module.exports.makeHMAC = (string, callback) =>
   hmac = crypto.createHmac('sha256', jido.settings.apikey).update(string).digest 'hex'
@@ -28,13 +29,14 @@ module.exports.makeHMAC = (string, callback) =>
 
 module.exports.getToken = (callback) =>
   resource = '/auth/user'
-  @makeHMAC "POSThttps://#{@api.hostname}/v0#{resource}", (signature) ->
+  @makeHMAC "POST#{jido.settings.endpoint}#{resource}", (signature) ->
     jido.api.post
-      url: "/v0#{resource}"
+      url: resource
       headers:
         'X-Auth-Uid': jido.settings.userid
         'X-Auth-Signature': signature
         'User-Agent': jido.settings.useragent
+        'X-Api-Version': 1
       complete: (err, res, data) ->
         if data.success
           jido.settings.token = data.success.content
@@ -44,13 +46,14 @@ module.exports.getToken = (callback) =>
         callback data
 
 module.exports.getData = (type, resource, callback) =>
-  @makeHMAC "#{type.toUpperCase()}https://#{jido.api.hostname}/v0#{resource}", (signature) ->
+  @makeHMAC "#{type.toUpperCase()}#{jido.settings.endpoint}#{resource}", (signature) ->
     jido.api.get
-      url: "/v0#{resource}"
+      url: resource
       headers:
         'X-Auth-Token': jido.settings.token
         'X-Auth-Signature': signature
         'User-Agent': jido.settings.useragent
+        'X-Api-Version': 1
       complete: (err, res, data) ->
         if err
           jido.settings.token = null if data.error and data.error.message is 'Unable to authenticate'

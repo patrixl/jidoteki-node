@@ -1,0 +1,8 @@
+2013-09-10  Alex Williams <license@unscramble.jp>
+
+    * update dependency: armest 2.0.2
+
+    * replace API versioning in URL, and place in http header
+
+    * update API to version 1
+

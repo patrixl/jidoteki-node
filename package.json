@@ -1,7 +1,7 @@
 {
   "author": "Alex Williams, Unscramble <license@unscramble.jp>",
   "name": "jidoteki",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Official Jidoteki.com API client and helper library",
   "main": "lib/jidoteki.js",
   "private": false,
@@ -10,7 +10,7 @@
     "url": "https://github.com/unscramble/jidoteki-node.git"
   },
   "dependencies": {
-    "armrest": "git+https://github.com/shutterstock/armrest.git#v2.0.1"
+    "armrest": ">= 2.0.2"
   },
   "devDependencies": {
     "coffee-script": ">= 1.6.1"
