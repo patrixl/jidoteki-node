@@ -1,3 +1,7 @@
+2013-09-10 Version 0.0.3
+
+    * force dependency: armest 2.0.x
+
 2013-09-10  Alex Williams <license@unscramble.jp>
 
     * update dependency: armest 2.0.2
