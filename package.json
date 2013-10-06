@@ -1,7 +1,7 @@
 {
   "author": "Alex Williams, Unscramble <license@unscramble.jp>",
   "name": "jidoteki",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Official Jidoteki.com API client and helper library",
   "main": "lib/jidoteki.js",
   "private": false,
@@ -13,7 +13,7 @@
     "armrest": "2.0.x"
   },
   "devDependencies": {
-    "coffee-script": ">= 1.6.1"
+    "coffee-script": ">= 1.6.3"
   },
   "keywords": [
     "jidoteki",
