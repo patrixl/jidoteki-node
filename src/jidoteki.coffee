@@ -18,7 +18,7 @@ jido.settings   =
   endpoint:   'https://api.beta.jidoteki.com'
   userid:     process.env.JIDOTEKI_USERID || 'change me'
   apikey:     process.env.JIDOTEKI_APIKEY || 'change me'
-  useragent:  'nodeclient-jidoteki/0.5'
+  useragent:  'nodeclient-jidoteki/0.1.0'
   token:      null
 
 jido.api        = armrest.client jido.settings.endpoint
@@ -36,7 +36,7 @@ module.exports.getToken = (callback) =>
         'X-Auth-Uid': jido.settings.userid
         'X-Auth-Signature': signature
         'User-Agent': jido.settings.useragent
-        'X-Api-Version': 1
+        'Accept-Version': 1
       complete: (err, res, data) ->
         if data.success
           jido.settings.token = data.success.content
@@ -53,7 +53,7 @@ module.exports.getData = (type, resource, callback) =>
         'X-Auth-Token': jido.settings.token
         'X-Auth-Signature': signature
         'User-Agent': jido.settings.useragent
-        'X-Api-Version': 1
+        'Accept-Version': 1
       complete: (err, res, data) ->
         if err
           jido.settings.token = null if data.error and data.error.message is 'Unable to authenticate'

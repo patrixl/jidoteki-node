@@ -1,3 +1,8 @@
+2013-12-03 Version 0.1.0
+
+    * update jidoteki-client user agent to: 0.1.0
+    * change API version header to 'Accept-Version'
+
 2013-10-06 Version 0.0.5
 
     * update jidoteki-client: 0.0.5
