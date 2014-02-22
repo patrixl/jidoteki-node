@@ -15,7 +15,7 @@ armrest   = require 'armrest'
 jido = exports ? this
 
 jido.settings   =
-  endpoint:   'https://api.beta.jidoteki.com'
+  endpoint:   'https://api.jidoteki.com'
   userid:     process.env.JIDOTEKI_USERID || 'change me'
   apikey:     process.env.JIDOTEKI_APIKEY || 'change me'
   useragent:  'nodeclient-jidoteki/0.1.0'
